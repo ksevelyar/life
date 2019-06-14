@@ -27,14 +27,14 @@ export default class Universe {
     const neighbours = this.neighbours(x, y)
     let neighboursCount = 0
 
-    for (let i = 0; i < 8; i++) {
+    for (const neighbour of neighbours) {
       if (neighboursCount > 3) { break } 
 
-      let neighbourX = neighbours[i][0]
-      let neighbourY = neighbours[i][1]
+      let neighbourX = neighbour[0]
+      let neighbourY = neighbour[1]
+      const xAxis = this.life[neighbourX]
 
-      if(!this.life[neighbourX]) { return }
-      if (this.life[neighbourX].includes(neighbourY)) { neighboursCount++ }
+      if (xAxis && xAxis.includes(neighbourY)) { neighboursCount++ }
     }
 
     return neighboursCount;
@@ -44,7 +44,7 @@ export default class Universe {
     const neighboursCount = this.aliveNeighbours(x, y) 
 
     const isNew = neighboursCount === 3
-    const isSurvived = !isNew && neighboursCount === 2 && this.life[x].includes(y)
+    const isSurvived = neighboursCount === 2 && this.life[x] && this.life[x].includes(y)
 
     return isNew || isSurvived
   }
@@ -58,7 +58,7 @@ export default class Universe {
       const pointY = point[1]
       const columnSet = this.possibleLife[pointX]
 
-      if (columnSet && pointY >= 0 && pointY <= this.size) { columnSet.add(pointY) }
+      if (columnSet && pointY >= 0 && pointY < this.size) { columnSet.add(pointY) }
     })
   }
 

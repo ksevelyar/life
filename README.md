@@ -11,7 +11,7 @@ https://ksevelyar.github.io/life/
 ## TODO
 
 * [x] fit the Universe to viewport on load
-* [ ] hide private methods with `_`
+* [x] hide private methods with `_`
 * [ ] implement binary / octo search for coordinates
 * [ ] cover with Jest
 

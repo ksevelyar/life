@@ -2,7 +2,7 @@
 
 ![screen][screen]
 
-Vanilla JS implementation with ES 10 Syntax. The only feature missing is native private methods with `#`, https://github.com/tc39/proposal-private-methods.
+Vanilla JS implementation with ES10 Syntax. The only feature missing is native private methods with `#`, https://github.com/tc39/proposal-private-methods.
 
 ## Demo
 

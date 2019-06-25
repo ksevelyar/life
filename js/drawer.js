@@ -28,7 +28,6 @@ export default class Drawer {
 
     return smallestSide - titleHeight - this.canvasPadding
   }
-
  
   _drawPixel(x, y) {
     this._context.fillStyle = this.color

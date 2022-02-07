@@ -1,18 +1,9 @@
-# Conway's Game of Life
+# [Conway's Game of Life](https://ksevelyar.github.io/life/)
 
 ![screen][screen]
 
-Vanilla JS implementation with ES10 Syntax. The only feature missing is native private methods with `#`, https://github.com/tc39/proposal-private-methods.
-
-## Demo
-
-https://ksevelyar.github.io/life/
-
 ## TODO
 
-* [x] fit the Universe to viewport on load
-* [x] hide private methods with `_`
-* [ ] implement binary / octo search for coordinates
-* [ ] cover with Jest
+rewrite in fucntional way with Rust and compile to wasm
 
 [screen]: https://i.imgur.com/TKyylrl.png "Life"

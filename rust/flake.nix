@@ -7,23 +7,28 @@
 
   outputs = { nixpkgs, flake-utils, rust-overlay, ... }:
     flake-utils.lib.eachSystem [ "x86_64-linux" ] (
-      system: let
+      system:
+      let
         pkgs = import nixpkgs {
           inherit system;
           overlays = [ rust-overlay.overlays.default ];
         };
       in
-        {
-          devShell = pkgs.mkShell {
-            nativeBuildInputs = with pkgs; [
-              (
-                rust-bin.stable.latest.default.override {
-                  targets = [];
-                }
-              )
-              pkg-config
-            ];
-          };
-        }
+      {
+        devShell = pkgs.mkShell {
+          nativeBuildInputs = with pkgs; [
+            (rust-bin.stable.latest.default.override {
+              targets = [ "wasm32-unknown-unknown" ];
+            })
+            openssl
+            pkg-config
+            cargo-watch
+
+            wasm-pack
+            wasm-bindgen-cli
+            binaryen
+          ];
+        };
+      }
     );
 }

@@ -1,4 +1,4 @@
-import init, { Universe, Cell } from './pkg/life_wasm.js'
+import init, { Universe, Cell } from './docs/life_wasm.js'
 
 async function run() {
   const wasm = await init()

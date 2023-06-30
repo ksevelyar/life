@@ -2,4 +2,4 @@
 
 ## Build
 
-`wasm-pack build --target web`
+`wasm-pack build --target web --out-dir doc`

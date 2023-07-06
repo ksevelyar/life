@@ -1,17 +1,24 @@
 import init, { Universe, Cell } from './docs/life_wasm.js'
 
 async function run() {
-  const wasm = await init()
-
   const canvas = document.querySelector('.universe')
-  const universe = Universe.new()
-  const width = universe.width()
-  const height = universe.height()
+  canvas.height = window.innerHeight
+  canvas.width = window.innerWidth
 
+  const wasm = await init()
+ 
   const cell_size = 5
-  const grid_color = '#cccccc'
-  const dead_color = '#ffffff'
-  const alive_color = '#000000'
+  const height = Math.floor(window.innerHeight / (cell_size + 1))
+  const width = Math.floor(window.innerWidth / (cell_size + 1))
+
+  canvas.height = height * 6 + 1
+  canvas.width = width * 6 + 1
+
+  const universe = Universe.new(width, height)
+
+  const grid_color = '#d7d7d7'
+  const dead_color = '#f2f2f2'
+  const alive_color = '#222831'
 
   const ctx = canvas.getContext('2d')
 
@@ -19,9 +26,6 @@ async function run() {
     const cellsPtr = universe.cells()
     const memory = wasm.memory
     const cells = new Uint8Array(memory.buffer, cellsPtr, width * height)
-
-    canvas.height = (cell_size + 1) * height + 1
-    canvas.width = (cell_size + 1) * width + 1
 
     ctx.beginPath()
 
